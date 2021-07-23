@@ -13,13 +13,19 @@
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        <span role="img" aria-label="money">💸</span>
+        <span role="img" aria-label="money">🏒</span>
         <a href="/">The HatTrick Platform</a>
       </h1>
       <nav>
+        <a href="/teams">Teams</a>
+        <a href="/players">Players</a>
+        {{!-- might need to change this --}}
+        {{!-- {{#if role  === 'coach'}}
+        <a href ="/stats">Manage Team</a>
+        {{/if}} --}}
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
+        <a href="/profile"> My Profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
