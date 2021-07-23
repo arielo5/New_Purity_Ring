@@ -13,7 +13,8 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'localhost',
       dialect: 'mysql',
-      port: 3303
+      port: 3306
+      // changed this from 3303, 3306 belongs to mysql
     }
   );
 }

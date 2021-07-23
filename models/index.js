@@ -5,17 +5,22 @@ const Coach = require ('./Coach');
 Player.belongsTo(User, {
     foreignKey: 'user_id',
 });
-
+User.hasOne(Player, {
+   foreignKey: 'user_id' 
+});
 Coach.belongsTo(User, {
     foreignKey: 'user_id',
 });
+User.hasOne(Coach, {
+    foreignKey: 'user_id' 
+});
 
-Player.hasOne(Coach, {
+Player.belongsTo(Coach, {
     foreignKey: 'coach_id',
 });
 
-Coach.hasMany(Player, {
-    foreignKey: 'player_id',
+ Coach.hasMany(Player, {
+    foreignKey: 'coach_id',
 });
 
 module.exports = {

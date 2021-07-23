@@ -26,13 +26,7 @@ Coach.init(
                 key: 'id'
             }
         },
-        player_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'player',
-                key: 'id'
-            }
-        },
+        // deleted player code is redundant, you can only link it one way.
     },
     {
         sequelize,
