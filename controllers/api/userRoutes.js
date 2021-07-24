@@ -30,15 +30,15 @@ router.get('/:id', (req, res) => {
             },
             {
                 model: Player,
-                attributes: ['id', 'name', 'last_name', 'jersey_num', 'team', 'coach', 'role'],
+                attributes: ['id', 'first_name', 'last_name', 'jersey_num', 'coach_id', 'user_id'],
             },
             {
                 model: Coach,
-                attributes: ['id', 'name', 'last_name', 'team', 'role'],
+                attributes: ['id', 'first_name', 'last_name', 'user_id'],
             },
             {
                 model: Fan,
-                attributes: ['id', 'name', 'last_name', 'fav_team', 'fav_player', 'role'],
+                attributes: ['id', 'first_name', 'last_name', 'user_id'],
             },
           ]
 
@@ -61,16 +61,15 @@ router.post('/', (req, res) => {
     User.create({
       email: req.body.email,
       password: req.body.password,
-      name: req.body.name,
-      last_name: req.body.last_name,
-      role: req.body.role
+      username: req.body.username,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name
     })
     .then(dbUserData => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
-        req.session.name = dbUserData.name;
+        req.session.first_name = dbUserData.name;
         req.session.last_name = dbUserData.last_name;
-        req.session.role = dbUserData.role;
         req.session.loggedIn = true;
     
         res.json(dbUserData);
@@ -100,9 +99,8 @@ router.post('/', (req, res) => {
       req.session.save(() => {
         // declare session variables
         req.session.user_id = dbUserData.id;
-        req.session.name = dbUserData.name;
+        req.session.first_name = dbUserData.first_name;
         req.session.last_name = dbUserData.last_name;
-        req.session.role = dbUserData.role;
         req.session.loggedIn = true;
   
         res.json({ user: dbUserData, message: 'You are now logged in!' });

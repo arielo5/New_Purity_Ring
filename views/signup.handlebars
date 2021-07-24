@@ -1,13 +1,32 @@
 <div class="column">
-<h2 class="title pb-4">create new account:</h2><hr>
+<h2 class="title pb-4">Create a new account:</h2><hr>
 <form class="signup-form">
   <div>
-    <label for="name-signup">First name:</label>
+    <label for="username-signup">Username:</label>
+    <input type="text" id="username-signup" />
+  </div>
+  <div>
+    <label for="firstName-signup">First Name:</label>
     <input type="text" id="firstName-signup" />
   </div>
   <div>
-    <label for="lastName-signup">Last name:</label>
+    <label for="lastName-signup">Last Name:</label>
+
     <input type="text" id="lastName-signup" />
+  </div>
+  <div class="control">
+    <label class="radio" for="coachRole-signup">
+      <input type="radio" name="answer" >
+      Coach
+    </label>
+    <label class="radio" for="playerRole-signup">
+      <input type="radio" name="answer">
+      Player
+    </label>
+    <label class="radio" for="fanRole-signup" disabled>
+      <input type="radio" name="answer" disabled>
+      Fan
+    </label>
   </div>
   <div>
     <label for="email-signup">Email:</label>
@@ -15,20 +34,12 @@
   </div>
   <div>
     <label for="password-signup">Password:</label>
-    <input type="password" id="password-signup"/>
-  </div>
-  <div>
-    <p>Please select your role</p>
-      <div>
-        <input type="radio" id="player" name="role" value="player" checked>
-        <label class="radio" for="player">player</label>
 
-        <input type="radio" id="coach" name="role" value="coach">
-        <label class="radio" for="coach">coach</label>
-      </div>
+    <input type="password" id="password-signup" />
+
   </div>
   <div>
-    <button type="submit" class="button is-primary">signup</button>
+    <button type="submit" class="button is-success">Signup</button>
   </div>
 </form>
 </div>
