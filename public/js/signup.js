@@ -4,7 +4,7 @@ async function signupFormHandler(event) {
     const firstName = document.querySelector('#firstName-signup').value.trim();
     const lastName = document.querySelector('#lastName-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim(); 
     const is_coach = document.getElementById('coach').checked;
 
     if (firstName && lastName && email && password) {
