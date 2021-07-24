@@ -43,5 +43,6 @@ Team.hasOne(Coach, {
 module.exports = {
     User,
     Player,
-    Coach
+    Coach,
+    Team
 };
