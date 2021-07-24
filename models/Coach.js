@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Coach extends Model {};
+class Coach extends Model { };
 
 Coach.init(
     {
@@ -26,7 +26,13 @@ Coach.init(
                 key: 'id'
             }
         },
-        // deleted player code is redundant, you can only link it one way.
+        team_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'team',
+                key: 'id'
+            }
+        },
     },
     {
         sequelize,
