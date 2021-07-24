@@ -7,6 +7,7 @@
   <title>The HatTrick Platform</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
 </head>
 
 <body>
@@ -14,11 +15,11 @@
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
         <span role="img" aria-label="money">🏒</span>
-        <a href="/">The HatTrick Platform</a>
+        <a href="/" class="title is-1">The HatTrick Platform</a>
       </h1>
       <nav>
-        <a href="/teams">Teams</a>
-        <a href="/players">Players</a>
+        <a href="/teams" class="button is-link">Teams</a>
+        <a href="/players" class="button is-link">Players</a>
         {{!-- might need to change this --}}
         {{!-- {{#if role  === 'coach'}}
         <a href ="/stats">Manage Team</a>
@@ -26,9 +27,9 @@
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile"> My Profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <button class="no-button" id="logout" class="button is-danger">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login" class="button is-primary">Login</a>
         {{/if}}
       </nav>
     </header>

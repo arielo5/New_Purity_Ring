@@ -4,7 +4,7 @@ const { User, Team, Player, Coach, Fan } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-    Player.findAll({
+    Coach.findAll({
       where: {
         // use the ID from the session
         user_id: req.session.user_id
@@ -13,9 +13,7 @@ router.get('/', (req, res) => {
         'id',
         'first_name',
         'last_name',
-        'jersey_num',
-        'user_id',
-        'coach_id'
+        'user_id'
       ],
       include: [
         {
@@ -23,27 +21,27 @@ router.get('/', (req, res) => {
           attributes: ['id', 'team_name', 'player_id', 'user_id', 'coach_id'],
           include: {
             model: User,
-            attributes: ['name', 'last_name'] 
+            attributes: ['first_name', 'last_name'] 
           }
         },
         {
-          model: Coach,
-          attributes: ['id', 'first_name', 'last_name', 'user_id'],
+          model: Player,
+          attributes: ['id', 'first_name', 'last_name', 'jersey_num', 'user_id', 'coach_id'],
           include: {
             model: User,
-            attributes: ['name', 'last_name']
+            attributes: ['first_name', 'last_name']
           }
         },  
         {
           model: User,
-          attributes: ['name', 'last_name']
+          attributes: ['first_name', 'last_name']
         }
       ]
     })
-      .then(dbPlayerData => {
+      .then(dbCoachData => {
         // serialize data before passing to template
-        const player = dbPlayerData.map(player => player.get({ plain: true }));
-        res.render('player', { player, loggedIn: true });
+        const coach = dbCoachData.map(coach => coach.get({ plain: true }));
+        res.render('coach', { coach, loggedIn: true });
       })
       .catch(err => {
         console.log(err);
@@ -52,7 +50,7 @@ router.get('/', (req, res) => {
   });
 
   router.get('/edit/:id', (req, res) => {
-    player.findOne({
+    coach.findOne({
       where: {
         id: req.params.id
       },
@@ -60,9 +58,7 @@ router.get('/', (req, res) => {
         'id',
         'first_name',
         'last_name',
-        'jersey_num',
-        'user_id',
-        'coach_id'
+        'user_id'
       ],
       include: [
         {
@@ -70,33 +66,33 @@ router.get('/', (req, res) => {
           attributes: ['id', 'team_name', 'player_id', 'user_id', 'coach_id'],
           include: {
             model: User,
-            attributes: ['name', 'last_name'] 
+            attributes: ['first_name', 'last_name'] 
           }
         },
         {
-          model: Coach,
-          attributes: ['id', 'first_name', 'last_name', 'user_id'],
+          model: Player,
+          attributes: ['id', 'first_name', 'last_name', 'jersey_num', 'user_id', 'coach_id'],
           include: {
             model: User,
-            attributes: ['name', 'last_name']
+            attributes: ['first_name', 'last_name']
           }
         },  
         {
           model: User,
-          attributes: ['name', 'last_name']
+          attributes: ['first_name', 'last_name']
         }
       ]
     })
-      .then(dbPlayerData => {
-        if (!dbPlayerData) {
+      .then(dbCoachData => {
+        if (!dbCoachData) {
           res.status(404).json({ message: 'No player found with this id' });
           return;
         }
   
         // serialize the data
-        const player = dbPlayerData.get({ plain: true });
+        const coach = dbCoachData.get({ plain: true });
 
-        res.render('edit-player', {
+        res.render('edit-coach', {
             player,
             loggedIn: true
             });
