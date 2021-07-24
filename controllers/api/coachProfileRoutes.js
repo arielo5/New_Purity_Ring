@@ -5,25 +5,23 @@ const sequelize = require('../../config/connection');
 
 router.get('/', (req, res) => {
     console.log('======================');
-    Player.findAll({
+    Coach.findAll({
       attributes: [
         'id',
-        'jersey_num',
         'user_id',
-        'coach_id',
         'team_id'
       ],
       include: [
         {
           model: Team,
-          attributes: ['id', 'name'],
+          attributes: ['id', 'name']
         },
         {
-          model: Coach,
-          attributes: ['id', 'first_name', 'last_name', 'user_id', 'team_id'],
+          model: Player,
+          attributes: ['id', 'user_id', 'coach_id', 'team_id', 'jersey-num'],
           include: {
             model: User,
-            attributes: ['name', 'last_name']
+            attributes: ['first_Name', 'last_Name']
           }
         },  
         {
@@ -32,7 +30,7 @@ router.get('/', (req, res) => {
         }
       ]
     })
-    .then(dbPlayerData => res.json(dbPlayerData))
+    .then(dbCoachData => res.json(dbCoachData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -40,17 +38,14 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Player.findOne({
+  Coach.findOne({
     where: {
       id: req.params.id
     },
     attributes: [
       'id',
-      'first_name',
-      'last_name',
-      'jersey_num',
       'user_id',
-      'coach_id'
+      'team_id'
     ],
     include: [
       {
@@ -58,8 +53,8 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'name'],
       },
       {
-        model: Coach,
-        attributes: ['id', 'user_id', 'team_id'],
+        model: Player,
+        attributes: ['id', 'user_id', 'team_id', 'jersey_num'],
         include: {
           model: User,
           attributes: ['first_Name', 'last_Name']
@@ -71,12 +66,12 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-    .then(dbPlayerData => {
-      if (!dbPlayerData) {
-        res.status(404).json({ message: 'No player found with this id' });
+    .then(dbCoachData => {
+      if (!dbCoachData) {
+        res.status(404).json({ message: 'No coach found with this id' });
         return;
       }
-      res.render(dbPlayerData);
+      res.render(dbCoachData);
     })
     .catch(err => {
       console.log(err);
@@ -84,15 +79,13 @@ router.get('/:id', (req, res) => {
     });
 });
 
-outer.post('/', withAuth, (req, res) => {
+router.post('/', withAuth, (req, res) => {
   console.log(req.session);
-    Player.create({
-      jersey_num: req.body.jersey_num,
+    Coach.create({
       user_id: req.session.user_id,
-      coach_id: req.session.coach_id,
       team_id: req.session.team_id
     })
-      .then(dbPostData => res.json(dbPostData))
+      .then(dbCoachData => res.json(dbCoachData))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -100,10 +93,8 @@ outer.post('/', withAuth, (req, res) => {
 });
 
 router.put('/:id', withAuth, (req, res) => {
-  Player.update({
-    jersey_num: req.body.jersey_num,
+  Coach.update({
     user_id: req.session.user_id,
-    coach_id: req.session.coach_id,
     team_id: req.session.team_id
     },
     {
@@ -111,12 +102,12 @@ router.put('/:id', withAuth, (req, res) => {
         id: req.params.id
       }
     })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No player found with this id' });
+    .then(dbCoachData => {
+      if (!dbCoachData) {
+        res.status(404).json({ message: 'No coach found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbCoachData);
     })
     .catch(err => {
       console.log(err);
@@ -125,17 +116,17 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  Player.destroy({
+  Coach.destroy({
     where: {
       id: req.params.id
     }
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No player found with this id' });
+    .then(dbCoachData => {
+      if (!dbCoachData) {
+        res.status(404).json({ message: 'No coach found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbCoachData);
     })
     .catch(err => {
       console.log(err);

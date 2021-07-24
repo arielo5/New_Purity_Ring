@@ -11,32 +11,27 @@ router.get('/', (req, res) => {
       },
       attributes: [
         'id',
-        'first_name',
-        'last_name',
         'jersey_num',
         'user_id',
-        'coach_id'
+        'coach_id',
+        'team_id'
       ],
       include: [
         {
           model: Team,
-          attributes: ['id', 'team_name', 'player_id', 'user_id', 'coach_id'],
-          include: {
-            model: User,
-            attributes: ['name', 'last_name'] 
-          }
+          attributes: ['id', 'name'],
         },
         {
           model: Coach,
-          attributes: ['id', 'first_name', 'last_name', 'user_id'],
+          attributes: ['id', 'user_id', 'team_id'],
           include: {
             model: User,
-            attributes: ['name', 'last_name']
+            attributes: ['first_Name', 'last_Name']
           }
         },  
         {
           model: User,
-          attributes: ['name', 'last_name']
+          attributes: ['first_Name', 'last_Name']
         }
       ]
     })
@@ -58,32 +53,27 @@ router.get('/', (req, res) => {
       },
       attributes: [
         'id',
-        'first_name',
-        'last_name',
         'jersey_num',
         'user_id',
-        'coach_id'
+        'coach_id',
+        'team_id'
       ],
       include: [
         {
           model: Team,
-          attributes: ['id', 'team_name', 'player_id', 'user_id', 'coach_id'],
-          include: {
-            model: User,
-            attributes: ['name', 'last_name'] 
-          }
+          attributes: ['id', 'name'],
         },
         {
           model: Coach,
-          attributes: ['id', 'first_name', 'last_name', 'user_id'],
+          attributes: ['id', 'user_id', 'team_id'],
           include: {
             model: User,
-            attributes: ['name', 'last_name']
+            attributes: ['first_Name', 'last_Name']
           }
         },  
         {
           model: User,
-          attributes: ['name', 'last_name']
+          attributes: ['first_Name', 'last_Name']
         }
       ]
     })
