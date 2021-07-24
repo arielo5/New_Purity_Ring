@@ -16,7 +16,11 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        username: {
+        first_Name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        last_Name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -34,6 +38,10 @@ User.init(
             validate: {
                 len: [8]
             },
+        },
+        is_coach: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
         },
     },
     {

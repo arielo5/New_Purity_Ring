@@ -2,20 +2,30 @@
 <h2 class="title pb-4">create new account:</h2><hr>
 <form class="signup-form">
   <div>
-    <label for="name-signup">name:</label>
-    <input type="text" id="name-signup" />
+    <label for="name-signup">First name:</label>
+    <input type="text" id="firstName-signup" />
   </div>
   <div>
-    <label for="lastName-signup">"last name:"</label>
+    <label for="lastName-signup">Last name:</label>
     <input type="text" id="lastName-signup" />
   </div>
   <div>
-    <label for="email-signup">email:</label>
+    <label for="email-signup">Email:</label>
     <input type="text" id="email-signup" />
   </div>
   <div>
-    <label for="password-signup">password:</label>
-    <input type="password" id="password-signup" />
+    <label for="password-signup">Password:</label>
+    <input type="password" id="password-signup"/>
+  </div>
+  <div>
+    <p>Please select your role</p>
+      <div>
+        <input type="radio" id="player" name="role" value="player" checked>
+        <label class="radio" for="player">player</label>
+
+        <input type="radio" id="coach" name="role" value="coach">
+        <label class="radio" for="coach">coach</label>
+      </div>
   </div>
   <div>
     <button type="submit" class="button is-primary">signup</button>
@@ -24,4 +34,4 @@
 </div>
 
 <!-- javascript file-->
-<script src="/javascript/signup.js"></script>
+<script src="/js/signup.js"></script>

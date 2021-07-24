@@ -167,3 +167,8 @@
   .motto {
     border: #3486eb solid 5px;
   }
+
+  .radio {
+    display: inline;
+    margin-right: 15px;
+  }
