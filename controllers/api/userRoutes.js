@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
             },
             {
                 model: Coach,
-                attributes: ['id', 'first_name', 'last_name', 'user_is'],
+                attributes: ['id', 'first_name', 'last_name', 'user_id'],
             },
             {
                 model: Fan,
