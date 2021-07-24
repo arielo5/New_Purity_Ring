@@ -28,6 +28,10 @@ Coach.hasMany(Player, {
     foreignKey: 'coach_id',
 });
 
+Coach.belongsTo(Team, {
+    foreignKey: 'team_id',
+});
+
 Team.hasMany(Player, {
     foreignKey: 'team_id',
 });
