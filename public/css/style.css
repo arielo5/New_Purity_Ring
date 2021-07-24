@@ -163,4 +163,14 @@
       flex-direction: column;
   }
 
+signup.handlebars
+  /* homepage */
+  .motto {
+    border: #3486eb solid 5px;
+  }
+
+  .radio {
+    display: inline;
+    margin-right: 15px;
+  }
 @import 'bulma/css/bulma.css'

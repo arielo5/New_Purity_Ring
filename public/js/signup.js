@@ -6,6 +6,8 @@ async function signupFormHandler(event) {
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
   
+    const is_coach = document.getElementById('coach').checked;
+
     if (firstName && lastName && email && password) {
       const response = await fetch('/api/users', {
         method: 'POST',
@@ -13,7 +15,8 @@ async function signupFormHandler(event) {
           firstName,
           lastName,
           email,
-          password
+          password,
+          is_coach,
         }),
         headers: { 'Content-Type': 'application/json' }
       });
