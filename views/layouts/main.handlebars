@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The HatTrick Platform</title>
+  {{!-- font Awesome --}}
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  {{!-- CSS style sheets --}}
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -19,10 +22,10 @@
       <nav>
         <a href="/teams">Teams</a>
         <a href="/players">Players</a>
-        {{!-- might need to change this --}}
-        {{!-- {{#if role  === 'coach'}}
-        <a href ="/stats">Manage Team</a>
-        {{/if}} --}}
+        {{!-- conditionally render link updates stats if the user is a coach --}}
+        {{#if is_coach}}
+        <a href="/stats">Manage Team</a>
+        {{/if}}
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile"> My Profile</a> |
@@ -36,8 +39,26 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      
+    {{!-- I added a footer currently contains all dummy tags and fake info --}}
+    <footer class="d-flex flex-column align-items-center" id="contactme">
+      <div class="container-fluid d-flex justify-content-center">
+
+        <!-- linkedin change this to something like FB or IG-->
+
+        <a href="#" aria-hidden="true"><span class="visually-hidden"></span><i class="fab fa-facebook"></i></a>
+        <!-- github -->
+
+        <a href="#" aria-hidden="true"><span class="visually-hidden"></span><i
+            class="social-icon fab fa-github"></i></a>
+        <!-- email icon -->
+
+        <a href="mailto:hattricksplatform@gmail.com" aria-hidden="true"><span class="visually-hidden"></span><i
+            class="social-icon fas fa-envelope"></i></a>
+        <!-- phone number icon -->
+
+        <a href="tel: +1-952-555-5555" aria-hidden="true"><span class="visually-hidden"></span><i class="social-icon fas fa-phone"></i></a>
+      </div>
+      <p class="footer-p">© Copyright 2021 HatTricks LLC</p>
     </footer>
   </div>
 
