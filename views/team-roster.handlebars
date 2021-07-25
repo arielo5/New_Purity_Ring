@@ -1,0 +1,17 @@
+<h1>Team Roster for {{team_name}}</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Jersey #</th>
+            <th>Name</th>
+            <th>Goals</th>
+            <th>Assists</th>
+            <th>Penalty Minutes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each players as |player|}}
+        {{> roster }} 
+        {{/each}}
+    </tbody>
+</table>
