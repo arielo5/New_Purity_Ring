@@ -21,6 +21,26 @@ const playerdata = [
         user_id: 3,
         coach_id: 2
     },
+    {
+        jersey_num: 99,
+        fav_team: 'Kings',
+        fav_player: 'Wayne Gretzky',
+        goals: 9,
+        assists: 19,
+        penalty_minutes: 2,
+        user_id: 5,
+        coach_id: 1
+    },
+    {
+        jersey_num: 4,
+        fav_team: 'Bruins',
+        fav_player: 'Bobby Orr',
+        goals: 0,
+        assists: 2,
+        penalty_minutes: 10,
+        user_id: 6,
+        coach_id: 2
+    },
     
 ];
 

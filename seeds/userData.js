@@ -29,6 +29,27 @@ const userdata = [
         password: 'password',
         is_coach: true,
     },
+    {
+        first_Name: 'Sam',
+        last_Name: 'Oscar',
+        email: 'sam@gmail.com',
+        password: 'password',
+        is_coach: false,
+    },
+    {
+        first_Name: 'Will',
+        last_Name: 'Olsen',
+        email: 'will@gmail.com',
+        password: 'password',
+        is_coach: false,
+    },
+    {
+        first_Name: 'Tim',
+        last_Name: 'Olsen',
+        email: 'tim@gmail.com',
+        password: 'password',
+        is_coach: false,
+    },
 ];
 
 const seedUsers = () => User.bulkCreate(userdata);
