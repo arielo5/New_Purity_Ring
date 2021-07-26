@@ -11,17 +11,14 @@ Coach.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        team_name: {
+            type: DataTypes.STRING,
+            unique: true,
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
-                key: 'id'
-            }
-        },
-        team_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'team',
                 key: 'id'
             }
         },

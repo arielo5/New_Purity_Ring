@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, STRING } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Player extends Model { };
@@ -13,10 +13,30 @@ Player.init(
         },
         jersey_num: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isNumeric: true,
             },
+        },
+        fav_team: {
+            type: DataTypes.STRING, 
+        },
+
+        fav_player: {
+            type: DataTypes.STRING,
+        },
+
+        goals: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
+        },
+        assists: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
+        },
+        penalty_minutes: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -29,13 +49,6 @@ Player.init(
             type: DataTypes.INTEGER,
             references: {
                 model: 'coach',
-                key: 'id'
-            }
-        },
-        team_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'team',
                 key: 'id'
             }
         },
