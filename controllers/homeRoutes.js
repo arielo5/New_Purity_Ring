@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/player');
+      res.redirect('/profile');
       return;
     }
   
@@ -17,7 +17,7 @@ router.get('/login', (req, res) => {
 
   router.get('/signup', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/player');
+      res.redirect('/profile');
       return;
     }
   

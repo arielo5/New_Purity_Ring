@@ -24,19 +24,22 @@
        
         <a href="/team" class="button is-link">Teams</a>
         <a href="/player" class="button is-link">Players</a>
-        
+
         {{!-- conditionally render link updates stats if the user is a coach --}}
         {{#if is_coach}}
-        <a href="/stats">Manage Team</a>
+        <a href="/stats/" class="button is-link">Manage Team</a>
+        {{/if}}
+
+      
+        <!-- Conditionally render login or logout links -->
+        {{#if loggedIn}}
+        <a href="/profile/" class="button is-link"> My Profile</a> 
+        <button id="logout" class="button is-danger">Logout</button>
+        {{else}}
+        <a href="/login/" class="button is-primary">Login</a>
         {{/if}}
         
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile"> My Profile</a> |
-        <button class="no-button" id="logout" class="button is-danger">Logout</button>
-        {{else}}
-        <a href="/login" class="button is-primary">Login</a>
-        {{/if}}
+        
       </nav>
     </header>
     <main class="container container-fluid mt-5">
@@ -67,7 +70,7 @@
   </div>
 
   <!-- Render script for logged in users only -->
-  {{#if logged_in}}
+  {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>

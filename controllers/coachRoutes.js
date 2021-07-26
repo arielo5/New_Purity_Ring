@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
       .then(dbCoachData => {
         // serialize data before passing to template
         const coach = dbCoachData.map(coach => coach.get({ plain: true }));
-        res.render('coach', { coach, loggedIn: true });
+        res.render('cprofile', { coach, loggedIn: true });
       })
       .catch(err => {
         console.log(err);
@@ -92,6 +92,10 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       });
 });
+
+// router.get("/cprofile", (req, res) => {
+//   res.send("WOOOOOOOWOWOWOWOWOWO COACH PROFILE");
+// })
 
 
 module.exports = router;
