@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
       .then(dbPlayerData => {
         // serialize data before passing to template
         const player = dbPlayerData.map(player => player.get({ plain: true }));
-        res.render('player', { player, loggedIn: true });
+        res.render('profile', { player, loggedIn: true });
       })
       .catch(err => {
         console.log(err);
@@ -68,12 +68,12 @@ router.get('/', (req, res) => {
           attributes: ['id', 'user_id', 'team_id'],
           include: {
             model: User,
-            attributes: ['first_Name', 'last_Name']
+            attributes: ['first_name', 'last_name']
           }
         },  
         {
           model: User,
-          attributes: ['first_Name', 'last_Name']
+          attributes: ['first_name', 'last_name']
         }
       ]
     })
@@ -86,7 +86,7 @@ router.get('/', (req, res) => {
         // serialize the data
         const player = dbPlayerData.get({ plain: true });
 
-        res.render('edit-player', {
+        res.render('edit', {
             player,
             loggedIn: true
             });
@@ -96,6 +96,10 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       });
 });
+
+// router.get('/profile', (req, res) => {
+//   res.send("WOO! Player profile!!");
+// })
 
 
 module.exports = router;
