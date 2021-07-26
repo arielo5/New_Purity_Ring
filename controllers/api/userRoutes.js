@@ -72,8 +72,11 @@ router.post('/', (req, res) => {
         req.session.user_id = dbUserData.id;
         req.session.first_name = dbUserData.name;
         req.session.last_name = dbUserData.last_name;
+        req.session.is_coach = dbUserData.is_coach;
         req.session.loggedIn = true;
     
+        console.log(loggedIn);
+        console.log(is_coach);
         res.json(dbUserData);
       });
     });
@@ -105,6 +108,7 @@ router.post('/', (req, res) => {
         req.session.user_id = dbUserData.id;
         req.session.first_name = dbUserData.first_name;
         req.session.last_name = dbUserData.last_name;
+        req.session.is_coach = dbUserData.is_coach;
         req.session.loggedIn = true;
   
         //res.json({ user: dbUserData, message: 'You are now logged in!' });
