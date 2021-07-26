@@ -14,13 +14,13 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
+  <div class="">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
         <span role="img" aria-label="money">🏒</span>
         <a href="/" class="title is-1">The HatTrick Platform</a>
       </h1>
-      <nav>
+      <nav class="py-5">
        
         <a href="/team" class="button is-link">Teams</a>
         <a href="/player" class="button is-link">Players</a>
@@ -39,12 +39,12 @@
         {{/if}}
       </nav>
     </header>
-    <main class="container container-fluid mt-5">
+    <main>
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
     {{!-- I added a footer currently contains all dummy tags and fake info --}}
-    <footer class="is-flex is-flex-direction-column is-justify-content-center" id="contactme">
+    <footer class="py-6 is-flex is-flex-direction-column is-justify-content-center" id="contactme">
       <div class="mx-auto">
 
         <!-- linkedin change this to something like FB or IG-->
