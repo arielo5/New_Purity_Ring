@@ -2,10 +2,6 @@
 <h2 class="title pb-4">Create a new account:</h2><hr>
 <form class="signup-form">
   <div>
-    <label for="username-signup">Username:</label>
-    <input type="text" id="username-signup" />
-  </div>
-  <div>
     <label for="firstName-signup">First Name:</label>
     <input type="text" id="firstName-signup" />
   </div>
@@ -15,18 +11,18 @@
     <input type="text" id="lastName-signup" />
   </div>
   <div class="control">
+    <label class="radio" for="playerRole-signup">
+      <input type="radio" name="answer" value="player" checked>
+      Player
+    </label>
     <label class="radio" for="coachRole-signup">
       <input type="radio" name="answer" value="coach">
       Coach
     </label>
-    <label class="radio" for="playerRole-signup">
-      <input type="radio" name="answer" value="player">
-      Player
-    </label>
-    <label class="radio" for="fanRole-signup" disabled>
+    {{!-- <label class="radio" for="fanRole-signup" disabled>
       <input type="radio" name="answer" value="fan" disabled>
       Fan
-    </label>
+    </label> --}}
   </div>
   <div>
     <label for="email-signup">Email:</label>
