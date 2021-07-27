@@ -86,10 +86,11 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   console.log(req.session);
     Player.create({
-      jersey_num: req.body.jersey_num,
+      jersey_num: req.body.jerseyNumber,
+      fav_player: req.body.favPlayer,
+      fav_team: req.body.favTeam,
       user_id: req.session.user_id,
-      coach_id: req.session.coach_id,
-      team_id: req.session.team_id
+      coach_id: req.body.coach,
     })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
