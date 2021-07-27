@@ -58,6 +58,7 @@ router.get('/:id', (req, res) => {
 
 // POST /api/users
 router.post('/', (req, res) => {
+  console.log("WOO", req.body);
     User.create({
       email: req.body.email,
       password: req.body.password,
@@ -68,10 +69,11 @@ router.post('/', (req, res) => {
     .then(dbUserData => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
-        req.session.first_name = dbUserData.name;
+        req.session.first_name = dbUserData.first_name;
         req.session.last_name = dbUserData.last_name;
+        req.session.is_coach = dbUserData.is_coach;
         req.session.loggedIn = true;
-    
+
         res.json(dbUserData);
       });
     });
@@ -79,6 +81,7 @@ router.post('/', (req, res) => {
 
   // LOGIN
   router.post('/login', (req, res) => {
+    console.log("Request: ", req.body);
     User.findOne({
       where: {
         email: req.body.email
@@ -89,22 +92,29 @@ router.post('/', (req, res) => {
         return;
       }
   
-      const validPassword = dbUserData.checkPassword(req.body.password);
+      const validPassword = dbUserData.passwordCheck(req.body.password);
   
       if (!validPassword) {
         res.status(400).json({ message: 'Incorrect password!' });
         return;
       }
   
+      console.log("HMM");
       req.session.save(() => {
         // declare session variables
         req.session.user_id = dbUserData.id;
         req.session.first_name = dbUserData.first_name;
         req.session.last_name = dbUserData.last_name;
+        req.session.is_coach = dbUserData.is_coach;
         req.session.loggedIn = true;
   
-        res.json({ user: dbUserData, message: 'You are now logged in!' });
+        //res.json({ user: dbUserData, message: 'You are now logged in!' });
+
+        if (dbUserData.is_coach) { res.redirect("/cprofile"); }
+      else { res.redirect("/profile"); }
       });
+
+      
     });
   });
 

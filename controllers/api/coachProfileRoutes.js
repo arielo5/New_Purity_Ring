@@ -21,12 +21,12 @@ router.get('/', (req, res) => {
           attributes: ['id', 'user_id', 'coach_id', 'team_id', 'jersey-num'],
           include: {
             model: User,
-            attributes: ['first_Name', 'last_Name']
+            attributes: ['first_name', 'last_name']
           }
         },  
         {
           model: User,
-          attributes: ['first_Name', 'last_Name']
+          attributes: ['first_name', 'last_name']
         }
       ]
     })
@@ -57,12 +57,12 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'user_id', 'team_id', 'jersey_num'],
         include: {
           model: User,
-          attributes: ['first_Name', 'last_Name']
+          attributes: ['first_name', 'last_name']
         }
       },  
       {
         model: User,
-        attributes: ['first_Name', 'last_Name']
+        attributes: ['first_name', 'last_name']
       }
     ]
   })
@@ -83,7 +83,7 @@ router.post('/', withAuth, (req, res) => {
   console.log(req.session);
     Coach.create({
       user_id: req.session.user_id,
-      team_id: req.session.team_id
+      team_name: req.body.teamName
     })
       .then(dbCoachData => res.json(dbCoachData))
       .catch(err => {

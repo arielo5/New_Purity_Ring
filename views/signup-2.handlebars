@@ -1,0 +1,47 @@
+<h1>One last step to complete your profile </h1>
+
+{{#if is_coach}}
+<h2>Please enter the name of your team below</h2>
+
+<form class="coach-signup-form">
+  <div>
+    <label for="teamName-signup">Team Name:</label>
+    <input type="text" id="teamName-signup" />
+  </div>
+    <button type="submit" class="button is-success">complete profile</button>
+  </div>
+</form>
+
+{{else}}
+<form class="player-signup-form">
+  <div>
+    <label for="JerseyNumber-signup">Jersey Number</label>
+    <input type="number" id="jerseyNumber-signup" />
+  </div>
+  <div>
+    <label for="favTeam-signup">Favorite NHL team</label>
+    <input type="text" id="favTeam-signup" />
+  </div>
+  <div>
+    <label for="favPlayer-signup">Favorite hockey player</label>
+    <input type="text" id="favPlayer-signup" />
+  </div>
+  <div>
+      <label for="teams">Select your team </label>
+      <select name="teams" id="teams">
+        {{#each coaches as |coach| }}
+        <option value="{{id}}">{{team_name}}</option>
+        {{/each}}
+      </select>
+  </div>
+    <button type="submit" class="button is-success">complete profile</button>
+  </div>
+</form>
+
+{{/if}}
+
+{{#if is_coach}}
+<script src="/js/signup-coach.js"></script>
+{{else}}
+<script src="/js/signup-player.js"></script>
+{{/if}}

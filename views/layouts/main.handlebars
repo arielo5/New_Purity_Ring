@@ -14,38 +14,40 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
+  <div class="">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
         <span role="img" aria-label="money">🏒</span>
-        <a href="/" class="title is-1">The HatTrick Platform</a>
+        <a href="/" class="title is-2">The HatTrick Platform</a>
       </h1>
-      <nav>
+      <nav class="py-5">
        
         <a href="/team" class="button is-link">Teams</a>
         <a href="/player" class="button is-link">Players</a>
-        
+
         {{!-- conditionally render link updates stats if the user is a coach --}}
         {{#if is_coach}}
-        <a href="/stats">Manage Team</a>
+        <a href="/stats/" class="button is-link">Manage Team</a>
+        {{/if}}    
+
+        <!-- Conditionally render login or logout links -->
+        {{#if loggedIn}}
+        <a href="/profile/" class="button is-link"> My Profile</a> 
+        <button id="logout" class="button is-danger">Logout</button>
+        {{else}}
+        <a href="/login/" class="button is-primary">Login</a>
         {{/if}}
         
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile"> My Profile</a> |
-        <button class="no-button" id="logout" class="button is-danger">Logout</button>
-        {{else}}
-        <a href="/login" class="button is-primary">Login</a>
-        {{/if}}
+        
       </nav>
     </header>
-    <main class="container container-fluid mt-5">
+    <main>
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
     {{!-- I added a footer currently contains all dummy tags and fake info --}}
-    <footer class="d-flex flex-column align-items-center" id="contactme">
-      <div class="container-fluid d-flex justify-content-center">
+    <footer class="py-6 is-flex is-flex-direction-column is-justify-content-center" id="contactme">
+      <div class="mx-auto">
 
         <!-- linkedin change this to something like FB or IG-->
 
@@ -62,12 +64,12 @@
 
         <a href="tel: +1-952-555-5555" aria-hidden="true"><span class="visually-hidden"></span><i class="social-icon fas fa-phone"></i></a>
       </div>
-      <p class="footer-p">© Copyright 2021 HatTricks LLC</p>
+      <p class="footer-p mx-auto">© Copyright 2021 HatTricks LLC</p>
     </footer>
   </div>
 
   <!-- Render script for logged in users only -->
-  {{#if logged_in}}
+  {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>

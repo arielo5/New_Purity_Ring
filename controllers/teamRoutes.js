@@ -1,18 +1,18 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User, Team, Player, Coach, Fan } = require('../models');
+const { User, Player, Coach } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-    Team.findAll({
+    Coach.findAll({
       attributes: [
         'id',
-        'name',
+        'team_name',
       ],
     })
       .then(dbTeamData => {
         // serialize data before passing to template
-        const teams = dbTeamData.map(team => team.get({ plain: true }));
+        const teams = dbTeamData.map(coach => coach.get({ plain: true }));
         res.render('team-list', {
           teams,
         });
@@ -23,61 +23,47 @@ router.get('/', (req, res) => {
       });
   });
 
-//   router.get('/edit/:id', (req, res) => {
-//     player.findOne({
-//       where: {
-//         id: req.params.id
-//       },
-//       attributes: [
-//         'id',
-//         'first_name',
-//         'last_name',
-//         'jersey_num',
-//         'user_id',
-//         'coach_id'
-//       ],
-//       include: [
-//         {
-//           model: Team,
-//           attributes: ['id', 'team_name', 'player_id', 'user_id', 'coach_id'],
-//           include: {
-//             model: User,
-//             attributes: ['name', 'last_name'] 
-//           }
-//         },
-//         {
-//           model: Coach,
-//           attributes: ['id', 'first_name', 'last_name', 'user_id'],
-//           include: {
-//             model: User,
-//             attributes: ['name', 'last_name']
-//           }
-//         },  
-//         {
-//           model: User,
-//           attributes: ['name', 'last_name']
-//         }
-//       ]
-//     })
-//       .then(dbPlayerData => {
-//         if (!dbPlayerData) {
-//           res.status(404).json({ message: 'No player found with this id' });
-//           return;
-//         }
-  
-//         // serialize the data
-//         const player = dbPlayerData.get({ plain: true });
-
-//         res.render('edit-player', {
-//             player,
-//             loggedIn: true
-//             });
-//       })
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-// });
+ router.get('/:id', (req, res) => {
+    Player.findAll({
+      where: {
+        coach_id: req.params.id
+      },
+      attributes: [
+        'id',
+        'jersey_num',
+        'goals',
+        'assists',
+        'penalty_minutes',
+        'user_id',
+        'coach_id'
+      ],
+      include: [
+        {
+          model: Coach,
+          attributes: ['id', 'team_name', 'user_id'],
+          include: {
+            model: User,
+            attributes: ['id', 'first_name', 'last_name']
+          }
+        },  
+        {
+          model: User,
+          attributes: ['first_name', 'last_name']
+        }
+      ]
+    })
+    .then(dbRosterData => {
+      // serialize data before passing to template
+      const players = dbRosterData.map(player => player.get({ plain: true }));
+      res.render('team-roster', {
+        players,
+      });
+    })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+});
 
 
 module.exports = router;

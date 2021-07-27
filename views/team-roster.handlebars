@@ -1,0 +1,17 @@
+<h2 class="is-size-3 has-text-centered">Team Roster for {{players.0.coach.team_name}}</h2>
+<table class="table has-text-centered mx-auto">
+    <thead>
+        <tr>
+            <th>Jersey #</th>
+            <th>Name</th>
+            <th>Goals</th>
+            <th>Assists</th>
+            <th>Penalty Minutes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each players as |player|}}
+        {{> roster }} 
+        {{/each}}
+    </tbody>
+</table>
