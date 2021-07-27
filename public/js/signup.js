@@ -23,11 +23,11 @@ async function signupFormHandler(event) {
       // check the response status
       if (response.ok) {
         console.log('success');
-        document.location.replace('/profile');
-      } else {
-        alert(response.statusText);
-      }
+        document.location.replace('/signup-2');
+      }else{
+        alert(response.statusText) 
     }
-}
+  }
+};
   
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
