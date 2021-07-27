@@ -1,0 +1,21 @@
+<h1>Hello Coach {{first_name}} </h1>
+<h2>Please update your profile</h2>
+<form class="edit-form">
+  <div>
+    <label for="firstName-edit">First Name:</label>
+    <input type="text" id="firstName-edit" value={{first_name}}/>
+  </div>
+  <div>
+    <label for="lastName-edit">Last Name:</label>
+
+    <input type="text" id="lastName-edit" value={{last_name}} />
+  </div>
+  <div>
+    <label for="teamName-edit">Email:</label>
+    <input type="text" id="teamName-edit" />
+  </div>
+  <div>
+    <button type="submit" class="button is-success">Update profile</button>
+  </div>
+</form>
+<script src="/js/edit-cprofile.js"></script>

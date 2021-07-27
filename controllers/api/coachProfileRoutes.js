@@ -83,7 +83,7 @@ router.post('/', withAuth, (req, res) => {
   console.log(req.session);
     Coach.create({
       user_id: req.session.user_id,
-      team_id: req.session.team_id
+      team_name: req.body.teamName
     })
       .then(dbCoachData => res.json(dbCoachData))
       .catch(err => {
