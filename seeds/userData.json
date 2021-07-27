@@ -1,0 +1,33 @@
+[
+{
+    "first_name": "Clay",
+    "last_name": "Holland",
+    "jersey_num": "22",
+    "user_id": "claholla",
+    "coach_id": "bliffy",
+    "team_id": "KC Skunks"
+},
+{
+    "first_name": "Richard",
+    "last_name": "Tompkins",
+    "jersey_num": "35",
+    "user_id": "richietee",
+    "coach_id": "bliffy",
+    "team_id": "KC Skunks"
+},
+{
+    "first_name": "Garfield",
+    "last_name": "Llewellen",
+    "jersey_num": "05",
+    "user_id": "olgarf",
+    "coach_id": "bliffy",
+    "team_id": "KC Skunks"
+},{
+    "first_name": "Lance",
+    "last_name": "Peppercorn",
+    "jersey_num": "59",
+    "user_id": "spicypepper",
+    "coach_id": "bliffy",
+    "team_id": "KC Skunks"
+}
+]

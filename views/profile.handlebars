@@ -13,7 +13,8 @@
         <div class="card-content">
             <div class="media">
                 <div class="media-content">
-                    <p class="title is-3 has-text-centered">Demetrius Vandersnoot</p>
+                    <p class="title is-3 has-text-centered" id="firstName-playerP">Demetrius</p>
+                    <p class="title is-3 has-text-centered" id="lastName-playerP">Vandersnoot</p>
                 </div>
             </div>
         </div>
@@ -21,10 +22,10 @@
 </div>
 
 <div class="column is-two-fifths ml-4">
-    <p class="title is-4 mt-6" id="teamName">Team: San Francisco Freeze Babies</p>
-    <p class="title is-4" id="jerseyNumber">Jersey #: 22</p>
-    <p class="title is-4 mt-6" id="faveNHL">Favorite NHL Team: Kentucky Bourbons</p>
-    <p class="title is-4" id="favePlayer">Favorite Player: Kip Gibberfold</p>
+    <p class="title is-4 mt-6">Team: <span id="teamName-playerP">San Francisco Freeze Babies</span></p>
+    <p class="title is-4">Jersey #: <span id="jerseyNumber-playerP">22</span></p>
+    <p class="title is-4 mt-6">Favorite NHL Team: <span id="faveTeam-playerP">Kentucky Bourbons</span></p>
+    <p class="title is-4">Favorite Player:<span id="favePlayer-playerP">Kip Gibberfold</span></p>
 </div>
 
 <div class="column mt-5">
@@ -51,19 +52,19 @@
             <div class="level-item has-text-centered">
                 <div>
                     <p class="heading">Goals</p>
-                    <p class="title">15</p>
+                    <p class="title" id="seasonGoals">15</p>
                 </div>
             </div>
             <div class="level-item has-text-centered">
     <div>
       <p class="heading">Penalty Minutes</p>
-      <p class="title">26</p>
+      <p class="title" id="seasonPenaltyMins">26</p>
     </div>
   </div>
   <div class="level-item has-text-centered">
     <div>
       <p class="heading">Assists</p>
-      <p class="title">245</p>
+      <p class="title" id="seasonAssists">245</p>
     </div>
   </div>
 </nav>
@@ -71,4 +72,4 @@
 <div class="column is-1"></div>
 </div>
 <!-- javascript file-->
-<script src="/javascript/signup.js"></script>
+<script src="/javascript/playerProfile.js"></script>
