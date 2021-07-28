@@ -4,7 +4,7 @@ const { User, Team, Player, Coach, Fan } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-    Player.findAll({
+    Player.findOne({
       where: {
         // use the ID from the session
         user_id: req.session.user_id
@@ -13,7 +13,12 @@ router.get('/', (req, res) => {
         'id',
         'jersey_num',
         'user_id',
-        'coach_id'
+        'coach_id',
+        'fav_player',
+        'fav_team',
+        'goals',
+        'assists',
+        'penalty_minutes',
       ],
       include: [
         {
@@ -32,8 +37,9 @@ router.get('/', (req, res) => {
     })
       .then(dbPlayerData => {
         // serialize data before passing to template
-        const player = dbPlayerData.map(player => player.get({ plain: true }));
-        res.render('profile', { player, loggedIn: true });
+        const player = dbPlayerData.get({ plain: true });
+        res.render('profile', { ...player,  loggedIn: req.session.loggedIn,
+          is_coach: req.session.is_coach });
       })
       .catch(err => {
         console.log(err);
