@@ -1,0 +1,25 @@
+<div class="column">
+<h2 class="title pb-4">Update {{playerStats.user.first_name}} {{playerStats.user.last_name}}'s Stats:</h2><hr>
+<form class="stats-form">
+  <div>
+    <label for="goals">Goals:</label>
+    <input type="number" id="goals" value={{playerStats.goals}} />
+  </div>
+  <div>
+    <label for="assists">Assists:</label>
+    <input type="number" id="assists" value={{playerStats.assists}} />
+  </div>
+  <div>
+    <label for="penaltyMinutes">Penalty Minutes:</label>
+    <input type="number" id="penaltyMinutes" value={{playerStats.penalty_minutes}} />
+  </div>
+  
+  <div>
+    <button type="submit" class="button is-success">Update Stats</button>
+  </div>
+</form>
+</div>
+<p class="has-text-white size-6" id="coach_id">{{ playerStats.coach_id }}</p>
+
+<!-- javascript file-->
+<script src="/js/update-stats.js"></script>
