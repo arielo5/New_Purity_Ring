@@ -25,15 +25,16 @@
         <a href="/team" class="button is-link">Teams</a>
         <a href="/player" class="button is-link">Players</a>
 
-        {{!-- conditionally render link updates stats if the user is a coach --}}
-        {{#if is_coach}}
-        <a href="/team/stats/{{coach.id}}" class="button is-link">Manage Team</a>
-        {{/if}}    
-
+       
         <!-- Conditionally render login or logout links -->
         {{#if loggedIn}}
-        <a href="/profile/" class="button is-link"> My Profile</a> 
+          {{#if is_coach}}
+        <a href="/team/stats/{{coach.id}}" class="button is-link">Manage Team</a>
         <button id="logout" class="button is-danger">Logout</button>
+          {{else}}
+          <a href="/profile/" class="button is-link"> My Profile</a> 
+          <button id="logout" class="button is-danger">Logout</button>
+          {{/if}}
         {{else}}
         <a href="/login/" class="button is-primary">Login</a>
         {{/if}}
