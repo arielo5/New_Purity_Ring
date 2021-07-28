@@ -4,6 +4,7 @@ const { User, Team, Player, Coach, Fan } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
+  console.log(req.session.user_id);
     Player.findAll({
       where: {
         // use the ID from the session
