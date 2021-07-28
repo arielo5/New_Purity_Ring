@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="box has-text-centered title is-2">
   Player Profile
 </div>
@@ -14,8 +13,8 @@
         <div class="card-content">
             <div class="media">
                 <div class="media-content">
-                    <p class="title is-3 has-text-centered" id="firstName-playerP">Demetrius</p>
-                    <p class="title is-3 has-text-centered" id="lastName-playerP">Vandersnoot</p>
+                    <p class="title is-3 has-text-centered" id="firstName-playerP">{{user.first_name}}</p>
+                    <p class="title is-3 has-text-centered" id="lastName-playerP">{{user.last_name}}</p>
                 </div>
             </div>
         </div>
@@ -23,10 +22,10 @@
 </div>
 
 <div class="column is-two-fifths ml-4">
-    <p class="title is-4 mt-6">Team: <span id="teamName-playerP">San Francisco Freeze Babies</span></p>
-    <p class="title is-4">Jersey #: <span id="jerseyNumber-playerP">22</span></p>
-    <p class="title is-4 mt-6">Favorite NHL Team: <span id="faveTeam-playerP">Kentucky Bourbons</span></p>
-    <p class="title is-4">Favorite Player:<span id="favePlayer-playerP">Kip Gibberfold</span></p>
+    <p class="title is-4 mt-6">Team: {{team_name}}</p>
+    <p class="title is-4">Jersey #: {{jersey_num}}</p>
+    <p class="title is-4 mt-6">Favorite NHL Team: {{fav_team}}</p>
+    <p class="title is-4">Favorite Player: {{fav_player}}</p>
 </div>
 
 <div class="column mt-5">
@@ -53,27 +52,22 @@
             <div class="level-item has-text-centered">
                 <div>
                     <p class="heading">Goals</p>
-                    <p class="title" id="seasonGoals">15</p>
+                    <p class="title">{{goals}}</p>
                 </div>
             </div>
             <div class="level-item has-text-centered">
     <div>
       <p class="heading">Penalty Minutes</p>
-      <p class="title" id="seasonPenaltyMins">26</p>
+      <p class="title">{{penalty_minutes}}</p>
     </div>
   </div>
   <div class="level-item has-text-centered">
     <div>
       <p class="heading">Assists</p>
-      <p class="title" id="seasonAssists">245</p>
+      <p class="title">{{assists}}</p>
     </div>
   </div>
 </nav>
 </div>
 <div class="column is-1"></div>
 </div>
-<!-- javascript file-->
-<script src="/javascript/playerProfile.js"></script>
-=======
-<div>Profile Player</div>
->>>>>>> 938a3581d705a42c12c5b9bc7410bc841d5befe5
