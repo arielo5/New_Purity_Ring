@@ -13,25 +13,20 @@ router.get('/', (req, res) => {
         'id',
         'jersey_num',
         'user_id',
-        'coach_id',
-        'team_id'
+        'coach_id'
       ],
       include: [
         {
-          model: Team,
-          attributes: ['id', 'name'],
-        },
-        {
           model: Coach,
-          attributes: ['id', 'user_id', 'team_id'],
+          attributes: ['id', 'user_id', 'team_name'],
           include: {
             model: User,
-            attributes: ['first_Name', 'last_Name']
+            attributes: ['id', 'first_name', 'last_name']
           }
         },  
         {
           model: User,
-          attributes: ['first_Name', 'last_Name']
+          attributes: ['first_name', 'last_name']
         }
       ]
     })

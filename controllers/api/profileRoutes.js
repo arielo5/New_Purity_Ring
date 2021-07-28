@@ -15,20 +15,16 @@ router.get('/', (req, res) => {
       ],
       include: [
         {
-          model: Team,
-          attributes: ['id', 'name'],
-        },
-        {
           model: Coach,
-          attributes: ['id', 'first_name', 'last_name', 'user_id', 'team_id'],
+          attributes: ['id', 'user_id', 'team_name'],
           include: {
             model: User,
-            attributes: ['name', 'last_name']
+            attributes: ['id', 'first_name', 'last_name']
           }
         },  
         {
           model: User,
-          attributes: ['first_Name', 'last_Name']
+          attributes: ['first_name', 'last_name']
         }
       ]
     })
@@ -60,8 +56,8 @@ router.get('/:id', (req, res) => {
         model: Coach,
         attributes: ['id', 'user_id', 'team_id'],
         include: {
-          model: User,
-          attributes: ['first_name', 'last_name']
+        //  model: User,
+          //attributes: ['first_name', 'last_name']
         }
       },  
       {
@@ -71,6 +67,7 @@ router.get('/:id', (req, res) => {
     ]
   })
     .then(dbPlayerData => {
+      console.log(dbPlayerData, "test");
       if (!dbPlayerData) {
         res.status(404).json({ message: 'No player found with this id' });
         return;
