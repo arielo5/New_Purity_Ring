@@ -1,1 +1,18 @@
-<div>Players list</div>
+<h2 class="is-size-3 has-text-centered">All League Players</h2>
+<table class="table has-text-centered mx-auto">
+    <thead>
+        <tr>
+            <th>Jersey #</th>
+            <th>Name</th>
+            <th>Team</th>
+            <th>Goals</th>
+            <th>Assists</th>
+            <th>Penalty Minutes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each players as |player|}}
+        {{> all-players }} 
+        {{/each}}
+    </tbody>
+</table>
