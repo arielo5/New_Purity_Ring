@@ -1,0 +1,20 @@
+<h1 class="is-size-2 has-text-centered">Update your players' stats</h1>
+
+<h2 class="is-size-5 has-text-centered"> Click on a player's name to update their stats</h2>
+
+<table class="table has-text-centered mx-auto">
+    <thead>
+        <tr>
+            <th>Jersey #</th>
+            <th>Name</th>
+            <th>Goals</th>
+            <th>Assists</th>
+            <th>Penalty Minutes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each players as |player|}}
+        {{> update-stats }} 
+        {{/each}}
+    </tbody>
+</table>

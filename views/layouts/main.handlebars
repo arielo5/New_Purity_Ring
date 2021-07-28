@@ -27,7 +27,7 @@
 
         {{!-- conditionally render link updates stats if the user is a coach --}}
         {{#if is_coach}}
-        <a href="/stats/" class="button is-link">Manage Team</a>
+        <a href="/team/stats/{{coach.id}}" class="button is-link">Manage Team</a>
         {{/if}}    
 
         <!-- Conditionally render login or logout links -->
