@@ -14,7 +14,8 @@ router.get('/', (req, res) => {
         // serialize data before passing to template
         const teams = dbTeamData.map(coach => coach.get({ plain: true }));
         res.render('team-list', {
-          teams,
+          teams, loggedIn: req.session.loggedIn,
+          is_coach: req.session.is_coach,
         });
       })
       .catch(err => {

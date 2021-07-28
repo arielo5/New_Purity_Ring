@@ -18,20 +18,22 @@ router.get('/', (req, res) => {
 
 // POST /api/users
 router.post('/', (req, res) => {
-  console.log('WOO', req.body);
-  User.create({
-    email: req.body.email,
-    password: req.body.password,
-    // username: req.body.username,
-    first_name: req.body.first_Name,
-    last_name: req.body.last_Name,
-  }).then((dbUserData) => {
-    req.session.save(() => {
-      req.session.user_id = dbUserData.id;
-      req.session.first_name = dbUserData.first_name;
-      req.session.last_name = dbUserData.last_name;
-      req.session.is_coach = dbUserData.is_coach;
-      req.session.loggedIn = true;
+  console.log("WOO", req.body);
+    User.create({
+      email: req.body.email,
+      password: req.body.password,
+      // username: req.body.username,
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
+      is_coach: req.body.is_coach,
+    })
+    .then(dbUserData => {
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.first_name = dbUserData.first_name;
+        req.session.last_name = dbUserData.last_name;
+        req.session.is_coach = dbUserData.is_coach;
+        req.session.loggedIn = true;
 
       res.json(dbUserData);
     });
