@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
   console.log(req.session.user_id);
-    Player.findAll({
+    Player.findOne({
       where: {
         // use the ID from the session
         user_id: req.session.user_id
