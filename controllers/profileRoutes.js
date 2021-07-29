@@ -82,7 +82,7 @@ router.get('/', (req, res) => {
       .then(dbPlayerData => {
         // serialize data before passing to template
         const player = dbPlayerData.get({ plain: true });
-        res.render('profile', { ...player,
+        res.render('public-profile', { ...player,
           is_coach: req.params.is_coach });
       })
       .catch(err => {
