@@ -98,14 +98,13 @@ router.post('/', withAuth, (req, res) => {
 
 router.put('/:id', withAuth, (req, res) => {
   Player.update({
-    jersey_num: req.body.jersey_num,
-    user_id: req.session.user_id,
-    coach_id: req.session.coach_id,
-    team_id: req.session.team_id
+    jersey_num: req.body.jerseyNumber,
+    fav_team: req.body.favTeam,
+    fav_player: req.body.favPlayer,
     },
     {
       where: {
-        id: req.params.id
+        user_id: req.params.id
       }
     })
     .then(dbPostData => {
@@ -124,7 +123,7 @@ router.put('/:id', withAuth, (req, res) => {
 router.delete('/:id', withAuth, (req, res) => {
   Player.destroy({
     where: {
-      id: req.params.id
+      user_id: req.params.id
     }
   })
     .then(dbPostData => {
@@ -132,7 +131,8 @@ router.delete('/:id', withAuth, (req, res) => {
         res.status(404).json({ message: 'No player found with this id' });
         return;
       }
-      res.json(dbPostData);
+      req.session.destroy();
+      res.status(200).json(dbPostData);
     })
     .catch(err => {
       console.log(err);

@@ -48,25 +48,22 @@ router.get('/', (req, res) => {
   });
 
   router.get('/edit/:id', (req, res) => {
-    player.findOne({
+    Player.findOne({
       where: {
-        id: req.params.id
+        user_id: req.params.id
       },
       attributes: [
         'id',
         'jersey_num',
+        'fav_team',
+        'fav_player',
         'user_id',
         'coach_id',
-        'team_id'
       ],
       include: [
         {
-          model: Team,
-          attributes: ['id', 'name'],
-        },
-        {
           model: Coach,
-          attributes: ['id', 'user_id', 'team_id'],
+          attributes: ['id', 'user_id', 'team_name'],
           include: {
             model: User,
             attributes: ['first_name', 'last_name']
@@ -74,7 +71,7 @@ router.get('/', (req, res) => {
         },  
         {
           model: User,
-          attributes: ['first_name', 'last_name']
+          attributes: ['first_name', 'last_name', 'email']
         }
       ]
     })
@@ -87,10 +84,9 @@ router.get('/', (req, res) => {
         // serialize the data
         const player = dbPlayerData.get({ plain: true });
 
-        res.render('edit', {
-            player,
-            loggedIn: true
-            });
+        res.render('edit-profile', {
+            ...player, loggedIn:req.session.loggedIn,
+            is_coach: req.session.is_coach });
       })
       .catch(err => {
         console.log(err);

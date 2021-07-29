@@ -1,0 +1,37 @@
+<h1>Hello {{user.first_name}} </h1>
+<h2>Please update your profile</h2>
+<form class="edit-form">
+    {{!-- future  development first,last,email --}}
+  {{!-- <div>
+    <label for="firstName-edit">First Name:</label>
+    <input type="text" id="firstName-edit" value={{user.first_name}} />
+  </div>
+  <div>
+    <label for="lastName-edit">Last Name:</label>
+    <input type="text" id="lastName-edit" value={{user.last_name}} />
+  </div>
+  <div>
+    <label for="email-edit">Email:</label>
+    <input type="email" value="{{user.email}}" id="email-edit" />
+  </div> --}}
+  <div>
+    <label for="jerseyNumber-edit">Jersey Number:</label>
+    <input type="number" value="{{jersey_num}}" id="jerseyNumber-edit" />
+  </div>
+  <div>
+    <label for="favTeam-edit">Favorite Team:</label>
+    <input type="text" value="{{fav_team}}" id="favTeam-edit" />
+  </div>
+  <div>
+    <label for="favPlayer-edit">Favorite Player:</label>
+    <input type="text" value="{{fav_player}}" id="favPlayer-edit" />
+  </div>
+  <div>
+    <button type="submit" class="button is-success">Update profile</button>
+  </div>
+</form>
+<div>
+    <button id="deleteBtn" type="submit" class="button is-danger">Delete profile</button>
+  </div>
+  <p id="user" class="has-text-white is-6">{{user_id}}</p>
+<script src="/js/edit-profile.js"></script>
