@@ -47,6 +47,50 @@ router.get('/', (req, res) => {
       });
   });
 
+  router.get('/:id', (req, res) => {
+    Player.findOne({
+      where: {
+        // use the ID from the session
+        user_id: req.params.id
+      },
+      attributes: [
+        'id',
+        'jersey_num',
+        'user_id',
+        'coach_id',
+        'fav_player',
+        'fav_team',
+        'goals',
+        'assists',
+        'penalty_minutes',
+      ],
+      include: [
+        {
+          model: Coach,
+          attributes: ['id', 'user_id', 'team_name'],
+          include: {
+            model: User,
+            attributes: ['id', 'first_name', 'last_name']
+          }
+        },  
+        {
+          model: User,
+          attributes: ['first_name', 'last_name']
+        }
+      ]
+    })
+      .then(dbPlayerData => {
+        // serialize data before passing to template
+        const player = dbPlayerData.get({ plain: true });
+        res.render('public-profile', { ...player, loggedIn:req.session.loggedIn,
+          is_coach: req.session.is_coach });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+
   router.get('/edit/:id', (req, res) => {
     Player.findOne({
       where: {
