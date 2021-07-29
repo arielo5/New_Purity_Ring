@@ -1,10 +1,13 @@
 {{!-- just need something in here to render homepage --}}
 <div class="splashpage">
-    {{!-- <img src="/images/rink.jpg" alt=""> --}}
+    <div class="motto-container">
     <div class="is-size-1 motto">
         <h2 class="has-text-weight-bold">Organize.<br> Stay Current. Get Pumped.</h2>
-        <hr id="hr">
+       
     </div>
-    
+     <hr id="hr">
+    {{#unless loggedIn}}
     <button class="create button is-success"><a href="/signup">Create an Account</a></button>
+    {{/unless}}
+    </div>
 </div>

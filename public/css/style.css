@@ -172,24 +172,29 @@ signup.handlebars
   }
 
   .splashpage {
-    height: 100vh;
+    position: relative;
+    height: 85vh;
     width: 100vw;
     background: url(/images/rink.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
+  .motto-container {
+    position: absolute;
+    bottom: 15%;
+    width: 100%;
+  }
   .motto {
-    position: relative;
-    top: 55vh;
     padding: 10px 10px 10px 40px;
   
   }
   .create {
-    position: relative;
-    top: 53vh;
-    left: 55vw;
+    position:absolute;
+    justify-self: center;
     width: 25%;
+    height: 15%;
+    margin: 0 45%;
   }
   #hr {
     background-color:#4A4A4A;
