@@ -33,7 +33,7 @@
 
 💻 Below is the gif showing the functionality of the application:
 
-![Project 2: The HatTrick Platform](.\public\images\TheHatTrickPlatform.gif)
+![Project 2: The HatTrick Platform](./public/images/TheHatTrickPlatform.gif)
 
 🎥 The full website of the application can be found [HERE](https://the-hattrick-platform.herokuapp.com/)
 
